@@ -10,7 +10,8 @@ RUN npm ci
 # ── builder ───────────────────────────────────────────────────────────────────
 FROM base AS builder
 WORKDIR /app
-COPY --from=deps /app/node_modules ./node_modules
+# Copy full deps stage (inclui node_modules raiz + apps/web/node_modules)
+COPY --from=deps /app ./
 COPY . .
 ENV NEXT_TELEMETRY_DISABLED=1
 RUN npm run build --workspace=apps/web
