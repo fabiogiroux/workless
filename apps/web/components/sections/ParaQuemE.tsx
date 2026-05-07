@@ -3,16 +3,16 @@ import { Hexagon } from "@/components/ui/Hexagon"
 
 const personas = [
   {
-    title: "Dono de PME 5-50 funcionários",
-    pain: "Sua equipe gasta horas em planilha, e-mail e processo que poderia rodar sozinho.",
+    title: "Dono de PME com 5 a 50 funcionários",
+    pain: "Você gere tudo, responde tudo, resolve tudo. Cada hora no operacional é uma hora fora do estratégico.",
   },
   {
-    title: "Gestor cansado de processo manual",
-    pain: "Você sabe que dá pra automatizar, mas não sabe por onde começar nem quem chamar.",
+    title: "Gestor que vive apagando incêndio",
+    pain: "Sabe que tem processo pra automatizar, mas não sabe por onde começar — e tem medo de gastar com tecnologia que não funciona.",
   },
   {
-    title: "Empresário com tarefa repetitiva",
-    pain: "WhatsApp lotado, atendimento sobrecarregado, e a operação não escala.",
+    title: "Empreendedor que já perdeu cliente por demora",
+    pain: "WhatsApp cheio, atendimento lento, cliente impaciente. Você precisaria de mais uma pessoa — ou de um sistema que trabalha no lugar dela.",
   },
 ]
 
@@ -22,10 +22,10 @@ export function ParaQuemE() {
       <div className="container-page">
         <div className="max-w-3xl mb-12 md:mb-16">
           <h2 className="text-section-title text-balance">
-            Pra quem a <span className="text-primary">Workless</span> é
+            Você se encaixa <span className="text-primary">aqui?</span>
           </h2>
           <p className="text-lg text-foreground-muted mt-4">
-            Empresários que sentem na pele que tempo é o ativo mais escasso da empresa.
+            Se você se reconhece em um desses perfis, a gente tem o que você precisa.
           </p>
         </div>
 

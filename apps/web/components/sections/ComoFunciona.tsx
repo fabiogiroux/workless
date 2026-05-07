@@ -1,18 +1,18 @@
 const passos = [
   {
     n: "01",
-    title: "Conversa de 30 min",
-    description: "Você me conta o problema. Sem compromisso, sem proposta enrolada.",
+    title: "Você conta o problema (30 min)",
+    description: "Uma conversa direta. Sem formulário, sem apresentação, sem venda. Você fala, eu entendo.",
   },
   {
     n: "02",
     title: "Proposta em 48h",
-    description: "Te entrego escopo, prazo e preço claros. Sem surpresa depois.",
+    description: "Escopo, prazo e preço fixos. Sem surpresa depois. Se não fizer sentido, tudo bem — sem custo, sem compromisso.",
   },
   {
     n: "03",
-    title: "Automação em até 4 semanas",
-    description: "Construo, valido com você semanalmente, e entrego rodando.",
+    title: "Automação rodando em até 4 semanas",
+    description: "Construída, testada, entregue. Com acompanhamento nos primeiros 30 dias.",
   },
 ]
 
@@ -21,9 +21,9 @@ export function ComoFunciona() {
     <section id="como-funciona" className="py-20 md:py-28">
       <div className="container-page">
         <div className="max-w-3xl mb-12 md:mb-16">
-          <h2 className="text-section-title text-balance">Como funciona</h2>
+          <h2 className="text-section-title text-balance">Simples. Sem enrolação.</h2>
           <p className="text-lg text-foreground-muted mt-4">
-            Da primeira conversa à automação rodando: três passos simples.
+            Da conversa à automação rodando: três passos.
           </p>
         </div>
 

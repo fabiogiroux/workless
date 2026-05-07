@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/Button"
-import { calendlyLink } from "@/lib/constants"
+import { whatsappLink } from "@/lib/constants"
 
 export function PlanoPioneiro() {
   return (
@@ -21,13 +21,16 @@ export function PlanoPioneiro() {
 
           <div className="relative max-w-3xl">
             <p className="text-sm font-mono text-primary uppercase tracking-wider mb-4">
-              Plano Pioneiro
+              Oferta de lançamento · Apenas 3 vagas
             </p>
             <h2 className="text-section-title text-balance">
-              3 vagas com <span className="text-primary">50% de desconto</span> pros primeiros clientes
+              50% de desconto pra quem entrar agora
             </h2>
             <p className="text-lg text-foreground-muted mt-6 text-balance">
-              A Workless está abrindo agora. Pioneiros entram com preço especial em troca de poder usar o projeto como exemplo (anonimizado se preferir) e indicar 1 contato relevante.
+              A Workless está abrindo. As 3 primeiras empresas entram com preço especial — em troca de feedback honesto e autorização pra usar o projeto como exemplo (anonimizado se preferir).
+            </p>
+            <p className="text-lg text-foreground-muted mt-3 text-balance">
+              Depois dessas 3 vagas, o preço volta ao normal. Sem exceção.
             </p>
 
             <div className="mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-4">
@@ -38,13 +41,13 @@ export function PlanoPioneiro() {
 
               <div className="hidden sm:block w-px h-6 bg-border" />
 
-              <Button asLink href={calendlyLink("pioneiro")} external size="lg">
-                Quero ser pioneiro
+              <Button asLink href={whatsappLink("Quero a vaga de pioneiro")} external size="lg">
+                Quero a vaga de pioneiro
               </Button>
             </div>
 
             <p className="text-xs text-foreground-muted/70 mt-6">
-              Após esses 3, preço volta pra tabela normal.
+              Sem compromisso pra conversar. Você decide depois da proposta.
             </p>
           </div>
         </div>

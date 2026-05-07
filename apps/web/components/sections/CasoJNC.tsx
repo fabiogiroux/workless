@@ -1,7 +1,7 @@
 const stats = [
   { value: "9+", label: "famílias pagantes" },
-  { value: "96,67%", label: "eval IA aprovado" },
-  { value: "6 meses", label: "solo com IA orquestrada" },
+  { value: "96,67%", label: "aprovação na avaliação da IA" },
+  { value: "6 meses", label: "do zero ao ar, solo com IA" },
 ]
 
 const stack = ["Next.js", "Prisma", "PostgreSQL", "Anthropic", "Cloudflare"]
@@ -12,14 +12,16 @@ export function CasoJNC() {
       <div className="container-page">
         <div className="max-w-3xl mb-10 md:mb-14">
           <p className="text-sm font-mono text-primary uppercase tracking-wider mb-4">
-            Caso real
+            O que eu construí antes de abrir a Workless
           </p>
           <h2 className="text-section-title text-balance">
             SaaS multi-tenant em produção, construído sozinho
           </h2>
           <p className="text-lg text-foreground-muted mt-4 text-balance">
-            Plataforma de gestão financeira familiar com chatbot IA via WhatsApp,
-            cobrança recorrente e infraestrutura própria. Tudo construído com IA orquestrada (Claude Code + agentes especializados).
+            Em 6 meses, construí do zero uma plataforma de gestão financeira para casais — com chatbot de IA via WhatsApp, cobrança recorrente, multi-tenant e infraestrutura própria. Sozinho. Com IA orquestrada.
+          </p>
+          <p className="text-lg text-foreground-muted mt-3 text-balance">
+            O chatbot responde perguntas financeiras, registra gastos e envia resumos — tudo por WhatsApp, sem abrir o app.
           </p>
         </div>
 
@@ -45,8 +47,9 @@ export function CasoJNC() {
           ))}
         </div>
 
-        <p className="text-sm text-foreground-muted/70 italic">
-          Detalhes do cliente sob NDA. Stack e métricas reais.
+        <p className="text-sm text-foreground-muted/70">
+          Cliente sob NDA. Stack e métricas reais.{" "}
+          <span className="text-primary font-medium">Isso é o que a Workless entrega pra você.</span>
         </p>
       </div>
     </section>

@@ -1,39 +1,37 @@
 import { Card } from "@/components/ui/Card"
 import { Hexagon } from "@/components/ui/Hexagon"
+import { whatsappLink } from "@/lib/constants"
 
 const ofertas = [
   {
-    title: "Chatbot WhatsApp + IA",
-    description: "Atendimento 24/7 sem soar robotizado.",
+    title: "Seu atendimento no automático, 24h por dia",
+    description: "WhatsApp respondendo, qualificando e agendando — mesmo quando você está dormindo.",
     bullets: [
-      "FAQ inteligente com contexto",
-      "Linguagem natural via LLM (Anthropic / OpenAI)",
-      "Integração com seu sistema",
+      "IA treinada com as informações da sua empresa",
+      "Linguagem natural (não parece robô)",
+      "Integração com seu sistema atual",
     ],
-    pricing: "R$ 1.250 a R$ 6.000 (Plano Pioneiro)",
-    deadline: "2 a 4 semanas",
+    cta: "Quanto custa pra minha empresa?",
   },
   {
-    title: "Automação de Operação",
-    description: "Planilha vira sistema. Processos rodam no automático.",
+    title: "Chega de copiar, colar e mandar e-mail",
+    description: "Identifique os processos que mais travam sua operação. A gente automatiza.",
     bullets: [
       "Fluxos integrados ponta a ponta",
       "Dashboard simples pra você acompanhar",
       "Dados centralizados, sem duplicação",
     ],
-    pricing: "R$ 1.250 a R$ 9.000 (Plano Pioneiro)",
-    deadline: "2 a 8 semanas",
+    cta: "Quero saber o que dá pra automatizar",
   },
   {
-    title: "SaaS sob medida",
-    description: "Quando seu processo merece virar produto digital próprio.",
+    title: "Seu próprio produto digital — sem equipe de TI",
+    description: "Quando a automação não basta e você precisa de uma solução que só existe pra você.",
     bullets: [
       "Multi-tenant, auth, billing",
-      "IA orquestrada por trás",
-      "Construído sozinho com Claude Code",
+      "IA integrada por padrão",
+      "Construído com Claude Code (mesmo stack do JNC)",
     ],
-    pricing: "Sob consulta",
-    deadline: "Conversa inicial gratuita",
+    cta: "Quero entender como funciona",
   },
 ]
 
@@ -46,7 +44,7 @@ export function Ofertas() {
             O que a <span className="text-primary">Workless</span> entrega
           </h2>
           <p className="text-lg text-foreground-muted mt-4">
-            Três caminhos pra tirar o trabalho manual do dia a dia da sua empresa.
+            Três caminhos. Você escolhe pelo que dói mais agora.
           </p>
         </div>
 
@@ -70,8 +68,14 @@ export function Ofertas() {
               </ul>
 
               <div className="mt-auto pt-6 border-t border-border">
-                <p className="text-sm font-semibold text-primary">{o.pricing}</p>
-                <p className="text-xs text-foreground-muted mt-1 font-mono">{o.deadline}</p>
+                <a
+                  href={whatsappLink(o.cta)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary/80 transition-colors"
+                >
+                  {o.cta} →
+                </a>
               </div>
             </Card>
           ))}
