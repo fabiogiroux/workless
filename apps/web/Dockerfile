@@ -24,10 +24,12 @@ ENV NEXT_TELEMETRY_DISABLED=1
 ENV PORT=3000
 ENV HOSTNAME="0.0.0.0"
 
-# standalone output + static assets
+# standalone output — server.js usa __dirname (apps/web/) como base
 COPY --from=builder /app/apps/web/.next/standalone ./
-COPY --from=builder /app/apps/web/.next/static ./.next/static
-COPY --from=builder /app/apps/web/public ./public
+# estáticos devem ficar em apps/web/.next/static (relativo ao server.js)
+COPY --from=builder /app/apps/web/.next/static ./apps/web/.next/static
+# public deve ficar em apps/web/public (relativo ao server.js)
+COPY --from=builder /app/apps/web/public ./apps/web/public
 
 EXPOSE 3000
 # standalone monorepo: server.js fica em apps/web/ não na raiz
