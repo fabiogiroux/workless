@@ -30,4 +30,5 @@ COPY --from=builder /app/apps/web/.next/static ./.next/static
 COPY --from=builder /app/apps/web/public ./public
 
 EXPOSE 3000
-CMD ["node", "server.js"]
+# standalone monorepo: server.js fica em apps/web/ não na raiz
+CMD ["node", "apps/web/server.js"]
