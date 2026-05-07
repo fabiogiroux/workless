@@ -1,0 +1,161 @@
+{
+  "project_id": "workless-v1",
+  "phase": "2_assess_complexity",
+  "assessed_by": "Aria (@architect)",
+  "assessment_date": "2026-05-07",
+  "input_docs": [
+    "docs/plans/2026-05-06-workless-design.md",
+    "docs/plans/2026-05-06-workless-site-brief.md"
+  ],
+
+  "complexity_dimensions": [
+    {
+      "id": "scope",
+      "name": "Scope (files affected)",
+      "score": 2,
+      "rationale": "Site V1 single page com ~10-15 arquivos novos: scaffold Next.js + 7 seções como componentes + design tokens + configs + páginas. Pequeno-médio."
+    },
+    {
+      "id": "integration",
+      "name": "Integration (external APIs)",
+      "score": 2,
+      "rationale": "3 integrações externas leves: Calendly (link externo), WhatsApp Business (deep link), Resend (já configurado no JNC, opcional pra contact form). Sem auth complexa, sem webhook crítico."
+    },
+    {
+      "id": "infrastructure",
+      "name": "Infrastructure (changes needed)",
+      "score": 2,
+      "rationale": "Setup novo: domínio workless.com.br via Registro.br + serviço EasyPanel (mesmo VPS administrator) + Cloudflare proxy + repo GitHub. Stack conhecida, sem learning curve."
+    },
+    {
+      "id": "knowledge",
+      "name": "Knowledge (team familiarity)",
+      "score": 2,
+      "rationale": "Stack idêntica ao JNC (Next.js 14 + Tailwind + Manrope + EasyPanel deploy). Time = Fabio + agentes AIOX. Branding doc + Site Brief já fechados. Zero unknowns técnicos."
+    },
+    {
+      "id": "risk",
+      "name": "Risk (criticality)",
+      "score": 1,
+      "rationale": "Site institucional sem cliente real, sem dados sensíveis, sem receita em risco. Um bug visual ou downtime de 1h não tem impacto. Risco mínimo."
+    }
+  ],
+
+  "score_summary": {
+    "total": 9,
+    "class_threshold": {
+      "SIMPLE": "≤ 8",
+      "STANDARD": "9-15",
+      "COMPLEX": "≥ 16"
+    },
+    "final_class": "STANDARD",
+    "position_in_class": "lower bound (próximo de SIMPLE)"
+  },
+
+  "implications_for_pipeline": {
+    "phases_required": "6 (Spec Pipeline padrão STANDARD)",
+    "phases_skip_allowed": [
+      "1_gather (Site Brief já é spec aprovada)",
+      "3_research (stack já conhecida, sem CVE/research necessário)"
+    ],
+    "phases_executed": [
+      "2_assess (this)",
+      "4_write_spec (next — Morgan + Uma + Aria)",
+      "5_critique (Quinn)",
+      "6_plan (Aria)"
+    ],
+    "revision_cycle_mandatory": false
+  },
+
+  "technical_decisions": {
+    "stack": {
+      "frontend_framework": "Next.js 14.2.x (App Router) — mesmo JNC",
+      "styling": "Tailwind CSS 3.x — mesmo JNC",
+      "language": "TypeScript 5.x",
+      "fonts": ["Manrope (UI)", "JetBrains Mono (técnico)"],
+      "rationale": "Reutiliza Design System tokens do JNC (Story 16.4) — copia globals.css + tailwind.config.ts e adapta paleta"
+    },
+    "infrastructure": {
+      "hosting": "EasyPanel (mesmo VPS administrator que JNC)",
+      "container": "Standalone Next.js build (output: 'standalone')",
+      "domain": "workless.com.br (a registrar Registro.br ~R$40/ano)",
+      "dns_proxy": "Cloudflare (igual JNC)",
+      "ssl": "Cloudflare automático",
+      "ci_cd": "Push pra master → EasyPanel webhook auto-deploy"
+    },
+    "integrations": {
+      "calendar": "Calendly free embed/link (CTA primário)",
+      "whatsapp": "Deep link wa.me/55XXX (CTA secundário)",
+      "analytics": "Plausible (~R$50/mês) ou Google Analytics 4 free — decidir antes deploy",
+      "email": "Resend (reusa setup JNC se houver contact form)"
+    },
+    "performance_targets": {
+      "lighthouse_mobile": "≥ 90",
+      "lighthouse_desktop": "≥ 95",
+      "first_contentful_paint": "≤ 1.5s",
+      "largest_contentful_paint": "≤ 2.5s",
+      "cumulative_layout_shift": "≤ 0.1"
+    },
+    "security": {
+      "csp": "Strict (sem unsafe-eval, com Calendly/WhatsApp allowlisted)",
+      "hsts": "max-age=31536000 + preload (igual JNC)",
+      "headers": "X-Frame-Options, X-Content-Type-Options, Referrer-Policy",
+      "secrets": "Nenhum no client (DSN público OK se Sentry adicionado depois)"
+    },
+    "seo": {
+      "meta": "title + description + OG image (1200x630)",
+      "schema": "Organization + LocalBusiness (BR)",
+      "sitemap": "Auto via next-sitemap",
+      "robots": "Allow all"
+    }
+  },
+
+  "project_structure_proposed": {
+    "root": "/home/administrator/projects/workless/",
+    "structure": [
+      "apps/web/ (Next.js app, mesmo padrão JNC monorepo)",
+      "  ├── app/",
+      "  │   ├── layout.tsx",
+      "  │   ├── page.tsx (single page V1)",
+      "  │   ├── globals.css (design tokens Workless)",
+      "  │   ├── opengraph-image.tsx",
+      "  │   └── robots.ts + sitemap.ts",
+      "  ├── components/",
+      "  │   ├── sections/ (Hero, ParaQuemE, Ofertas, ComoFunciona, CasoJNC, PlanoPioneiro, CtaFinal)",
+      "  │   ├── ui/ (Button, Card, Hexagon, ...)",
+      "  │   └── layout/ (Navbar, Footer)",
+      "  ├── lib/",
+      "  │   ├── tokens.ts (design tokens TS)",
+      "  │   └── seo.ts (helpers de meta)",
+      "  ├── public/",
+      "  │   ├── logo.svg",
+      "  │   ├── favicon.ico",
+      "  │   └── og-default.png",
+      "  ├── next.config.mjs",
+      "  ├── tailwind.config.ts",
+      "  ├── tsconfig.json",
+      "  └── package.json",
+      "docs/",
+      "  ├── plans/ (já existem: design + site-brief)",
+      "  ├── specs/ (este arquivo + outros do Spec Pipeline)",
+      "  └── stories/ (Epic + 10 stories)",
+      "package.json (workspace root, mesmo padrão JNC)"
+    ]
+  },
+
+  "next_phase": "4_write_spec (skipping 3_research)",
+  "next_agents": ["Morgan (@pm)", "Uma (@ux-design-expert)", "Aria (@architect)"],
+
+  "_handoff_to_orion": {
+    "from": "Aria (@architect)",
+    "phase_completed": "2_assess_complexity",
+    "result": "STANDARD class confirmed (score 9)",
+    "next_action": "Orion routes to Morgan + Uma + Aria for Phase 4 (write spec). Skipping Phase 3 (research) — stack conhecida.",
+    "phase_4_inputs_ready": [
+      "Design doc (branding completo)",
+      "Site Brief (estrutura V1 single page)",
+      "01-complexity.json (this)",
+      "Technical decisions (stack, infra, performance, SEO)"
+    ]
+  }
+}
